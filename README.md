@@ -73,3 +73,6 @@ Why it matters
 Eliminates queues and proxy attendance without invading student privacy.
 
 FRONTEND 
+<img width="1600" height="738" alt="image" src="https://github.com/user-attachments/assets/b7423f38-4106-4b06-a99c-7bf17d70429f" />
+
+
