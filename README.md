@@ -74,5 +74,12 @@ Eliminates queues and proxy attendance without invading student privacy.
 
 FRONTEND 
 <img width="1600" height="738" alt="image" src="https://github.com/user-attachments/assets/b7423f38-4106-4b06-a99c-7bf17d70429f" />
+<img width="1600" height="711" alt="image" src="https://github.com/user-attachments/assets/dcfdcf80-3570-42e1-8fdb-d9e2062cfa63" />
+<img width="1600" height="719" alt="image" src="https://github.com/user-attachments/assets/c2d90b4c-21c9-496c-8bf0-89e1303f3c25" />
+<img width="891" height="132" alt="image" src="https://github.com/user-attachments/assets/fa0cfa91-c6b1-4092-8be5-00b30a0e6590" />  using transformers for severity analysis
+<img width="497" height="327" alt="image" src="https://github.com/user-attachments/assets/79505122-26af-451b-ad4f-fab4fedf0c66" /> <img width="1600" height="737" alt="image" src="https://github.com/user-attachments/assets/9d0d9dd7-fc3a-4262-982e-71d4af766c0c" />
+
+
+
 
 
