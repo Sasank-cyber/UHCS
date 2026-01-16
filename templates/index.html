@@ -1,92 +1,205 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>SmartHostel</title>
-        <script src="https://cdn.tailwindcss.com"></script>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Hostel Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --accent-blue: #38bdf8;
+            --accent-purple: #c084fc;
+        }
 
-    <body class="bg-slate-900 text-white">
-        <!-- Header -->
-        <header class="p-6 border-b border-white/10">
-            <h1 class="text-2xl font-bold text-cyan-400">SmartHostel</h1>
-            <p class="text-sm text-white/60">Intelligent Hostel Management</p>
-        </header>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-        <!-- Login -->
-        <section class="p-6 max-w-md mx-auto">
-            <h2 class="text-xl mb-4">Student Login</h2>
+        /* Header Styles */
+        header {
+            width: 90%;
+            max-width: 1200px;
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-            <input
-                id="name"
-                placeholder="Name"
-                class="w-full p-2 mb-3 rounded bg-white/10"
-            />
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
 
-            <input
-                id="block"
-                placeholder="Block"
-                class="w-full p-2 mb-3 rounded bg-white/10"
-            />
+        .brand-icon {
+            background: var(--accent-purple);
+            padding: 8px;
+            border-radius: 8px;
+            font-size: 20px;
+        }
 
-            <input
-                id="room"
-                placeholder="Room"
-                class="w-full p-2 mb-3 rounded bg-white/10"
-            />
+        .system-status {
+            color: #4ade80;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-            <button
-                onclick="login()"
-                class="w-full bg-cyan-500 py-2 rounded font-semibold"
-            >
-                Login
-            </button>
-        </section>
+        .status-dot {
+            height: 8px;
+            width: 8px;
+            background-color: #4ade80;
+            border-radius: 50%;
+        }
 
-        <!-- Dashboard -->
-        <section id="dashboard" class="hidden p-6 max-w-3xl mx-auto">
-            <h2 id="welcome" class="text-xl mb-4"></h2>
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-top: 60px;
+            max-width: 800px;
+        }
 
-            <!-- Attendance -->
-            <div class="bg-white/5 p-4 rounded-xl mb-6">
-                <h3 class="mb-2 font-semibold">Attendance</h3>
-                <button
-                    onclick="markAttendance()"
-                    class="bg-green-500 px-4 py-2 rounded"
-                >
-                    Mark Present
-                </button>
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            color: var(--text-dim);
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        /* Cards Section */
+        .card-container {
+            display: flex;
+            gap: 30px;
+            margin-top: 50px;
+            width: 90%;
+            max-width: 1000px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid #334155;
+            border-radius: 16px;
+            padding: 40px;
+            flex: 1;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            border-color: #475569;
+            transform: translateY(-5px);
+        }
+
+        .portal-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin-bottom: 25px;
+        }
+
+        .blue-icon { background: #0ea5e9; }
+        .purple-icon { background: linear-gradient(135deg, #a855f7, #ec4899); }
+
+        .card h2 { margin-bottom: 15px; font-size: 1.8rem; }
+        .card p { color: var(--text-dim); margin-bottom: 30px; line-height: 1.5; }
+
+        .enter-link {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .enter-link:hover { opacity: 0.8; }
+
+        /* Footer Icons */
+        .features-footer {
+            margin-top: auto;
+            padding: 50px 0;
+            display: flex;
+            gap: 60px;
+            opacity: 0.8;
+        }
+
+        .feature-item {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        .feature-icon {
+            display: block;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand">
+            <div class="brand-icon">🏢</div>
+            <div>
+                <div style="font-weight: 700; font-size: 1.2rem;">Smart Hostel Management</div>
+                <div style="font-size: 0.9rem; color: var(--text-dim);">University Hostel System</div>
             </div>
+        </div>
+        <div class="system-status">
+            <span class="status-dot"></span> System Online
+        </div>
+    </header>
 
-            <!-- Complaint -->
-            <div class="bg-white/5 p-4 rounded-xl">
-                <h3 class="mb-2 font-semibold">Complaint</h3>
+    <main class="hero">
+        <h1>Welcome to the Portal</h1>
+        <p>Intelligent complaint prioritization with NLP & Explainable AI, and privacy-preserving attendance tracking</p>
+    </main>
 
-                <select
-                    id="category"
-                    class="w-full mb-2 p-2 bg-white/10 rounded"
-                >
-                    <option value="water">Water</option>
-                    <option value="electricity">Electricity</option>
-                    <option value="wifi">WiFi</option>
-                    <option value="safety">Safety</option>
-                </select>
+    <div class="card-container">
+        <div class="card">
+            <div class="portal-icon blue-icon">👤</div>
+            <h2>Student Portal</h2>
+            <p>Mark attendance, submit complaints, and track resolution status</p>
+            <a href="StudentPortal_sign.html" class="enter-link">Enter Portal &rarr;</a>
+        </div>
 
-                <textarea
-                    id="desc"
-                    class="w-full p-2 bg-white/10 rounded mb-2"
-                    placeholder="Describe issue..."
-                ></textarea>
+        <div class="card">
+            <div class="portal-icon purple-icon">🛡️</div>
+            <h2>Admin Portal</h2>
+            <p>Manage complaints, view analytics, and monitor attendance</p>
+            <a href="admin_signin.html" class="enter-link">Enter Portal &rarr;</a>
+        </div>
+    </div>
 
-                <button
-                    onclick="submitComplaint()"
-                    class="bg-amber-500 px-4 py-2 rounded"
-                >
-                    Submit
-                </button>
-            </div>
-        </section>
+    <footer class="features-footer">
+        <div class="feature-item"><span class="feature-icon">🤖</span>NLP-Powered</div>
+        <div class="feature-item"><span class="feature-icon">📊</span>Explainable AI</div>
+        <div class="feature-item"><span class="feature-icon">🔒</span>Privacy-First</div>
+        <div class="feature-item"><span class="feature-icon">📶</span>WiFi-Verified</div>
+    </footer>
 
-        <script src="/static/js/app.js"></script>
-    </body>
+</body>
 </html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login - Smart Hostel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --modal-bg: rgba(30, 41, 59, 0.7); /* Semi-transparent */
+            --input-bg: rgba(15, 23, 42, 0.6);
+            --accent-gradient: linear-gradient(90deg, #3b82f6, #06b6d4);
+            --text-main: #ffffff;
+            --text-dim: #94a3b8;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            overflow: hidden; /* Prevents scrolling behind the modal */
+        }
+
+        /* This simulates the blurred background of the previous page */
+        .background-blur {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=2070') no-repeat center center;
+            background-size: cover;
+            filter: blur(15px) brightness(0.3);
+            z-index: -1;
+        }
+
+        /* Overlay to darken further */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        /* Modal Box */
+        .modal-card {
+            background: var(--modal-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            width: 100%;
+            max-width: 450px;
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        /* Close Button */
+        .close-btn {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 24px;
+            transition: color 0.2s;
+        }
+
+        .close-btn:hover {
+            color: white;
+        }
+
+        /* Icon Container */
+        .user-icon-wrap {
+            background: #0ea5e9;
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 30px;
+            color: white;
+            box-shadow: 0 10px 15px -3px rgba(14, 165, 233, 0.3);
+        }
+
+        h2 {
+            margin: 0 0 30px 0;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        /* Form Styling */
+        form {
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"], 
+        input[type="password"] {
+            width: 100%;
+            padding: 14px;
+            background: var(--input-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: white;
+            box-sizing: border-box;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        input:focus {
+            border-color: #3b82f6;
+        }
+
+        /* Checkbox */
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            margin: 20px 0;
+            cursor: pointer;
+        }
+
+        /* Submit Button */
+        .login-btn {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            background: var(--accent-gradient);
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            transition: opacity 0.2s;
+        }
+
+        .login-btn:hover {
+            opacity: 0.9;
+        }
+
+        .demo-text {
+            margin-top: 25px;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background-blur"></div>
+
+    <div class="overlay">
+        <div class="modal-card">
+            <a href="{{ url_for('index') }}" class="close-btn">&times;</a>
+
+            <div class="user-icon-wrap">👤</div>
+            
+            <h2>Student Login</h2>
+
+            <form action="/login_submit" method="POST">
+                <div class="form-group">
+                    <label>Student ID</label>
+                    <input type="text" placeholder="Enter your ID" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="Enter password" required>
+                </div>
+
+                <label class="remember-me">
+                    <input type="checkbox"> Remember me
+                </label>
+
+                <button type="submit" class="login-btn">
+                    Sign In &rarr;
+                </button>
+            </form>
+
+            <div class="demo-text">
+                Demo: Use any ID and password
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

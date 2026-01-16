@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ portal_type }} Login - Smart Hostel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #06090f;
+            --modal-bg: rgba(15, 15, 20, 0.8);
+            --input-bg: rgba(255, 255, 255, 0.05);
+            --text-main: #ffffff;
+            --text-dim: #94a3b8;
+            /* Dynamic colors based on portal */
+            --accent-color: {% if portal_type == 'Student' %} #3b82f6 {% else %} #a855f7 {% endif %};
+            --btn-gradient: {% if portal_type == 'Student' %} linear-gradient(90deg, #3b82f6, #06b6d4) {% else %} linear-gradient(90deg, #a855f7, #ec4899) {% endif %};
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow: hidden;
+        }
+
+        /* The Blurred Background Effect */
+        .page-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Replace with your actual background image or a screenshot of index */
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://i.imgur.com/your_index_bg.png');
+            background-size: cover;
+            filter: blur(12px) brightness(0.4);
+            z-index: 1;
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .login-card {
+            background: var(--modal-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            width: 100%;
+            max-width: 440px;
+            padding: 50px 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+
+        /* Close Button (X) */
+        .close-link {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+
+        .close-link:hover {
+            color: white;
+        }
+
+        /* Icon Styling */
+        .portal-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--btn-gradient);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 32px;
+            color: white;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        /* Form Layout */
+        .form-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--input-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-color: var(--accent-color);
+        }
+
+        /* Checkbox */
+        .remember-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            margin: 20px 0 30px;
+            cursor: pointer;
+        }
+
+        input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        /* Submit Button */
+        .btn-submit {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background: var(--btn-gradient);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .btn-submit:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .demo-note {
+            margin-top: 25px;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="page-wrapper"></div>
+
+    <div class="modal-overlay">
+        <div class="login-card">
+            <a href="{{ url_for('index') }}" class="close-link">&times;</a>
+
+            <div class="portal-icon">
+                <!-- {% if portal_type == 'Student' %}👤{% else %}🛡️{% endif %} -->
+            </div>
+            
+            <h2>{{ portal_type }} Login</h2>
+
+            <form action="/login" method="POST">
+                <div class="form-group">
+                    <label>{{ portal_type }} ID</label>
+                    <input type="text" name="userid" placeholder="Enter your ID" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" placeholder="Enter password" required>
+                </div>
+
+                <label class="remember-wrap">
+                    <input type="checkbox"> Remember me
+                </label>
+
+                <button type="submit" class="btn-submit">
+                    Sign In <span>&rarr;</span>
+                </button>
+            </form>
+
+            <div class="demo-note">
+                Demo: Use any ID and password
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
