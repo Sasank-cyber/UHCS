@@ -1,76 +1,91 @@
-🏫 AI-Powered Smart Hostel Management System
+🏨 UHCS — Universal Hostel Complaint System
 
-A privacy-first, AI-driven system to intelligently manage hostel complaints and attendance, designed specifically for Indian college hostels.
+AI-Powered • Privacy-First • Deployable for Indian College Hostels
 
-📌 Problem Statement
+UHCS is an intelligent, privacy-preserving hostel management system designed specifically for Indian college hostels.
+It combines AI-based complaint prioritization with a secure, non-invasive hostel attendance system, ensuring that critical issues are resolved first while maintaining student privacy and administrative efficiency.
 
-Traditional hostel management systems suffer from:
+🚀 Key Highlights
 
-First-come-first-serve complaint handling that ignores urgency
+🔥 AI-prioritized complaint handling (not first-come-first-serve)
 
-Manual, time-consuming attendance processes
+🧠 Explainable AI — every priority score is justified
 
-Proxy attendance and lack of transparency
+🔐 Privacy-preserving attendance (no biometrics, no cameras)
 
-Poor visibility for wardens and administrators
+📊 Admin analytics dashboard with reports & graphs
 
-💡 Solution Overview
+🇮🇳 Designed for real Indian hostel workflows
 
-This project provides an integrated, deployable hostel management system that:
+⚡ Demo-ready & deployable with minimal changes
 
-Automatically prioritizes complaints using NLP and Explainable AI
+🖼️ Project Screenshots
+Landing Page (Student & Admin Portals)
 
-Prevents proxy attendance without biometrics or surveillance
+Student Login Modal
 
-Provides transparent decision-making for administrators
+Student Dashboard
 
-🚨 Intelligent Complaint Management
-Features
+AI Complaint Classification (NLP)
 
-NLP-based complaint classification
+Image-Based Urgency Detection
 
-Priority scoring based on:
+Explainable AI Output
 
-Urgency (water, electricity, safety, etc.)
+📌 Note: Place all images inside an /images folder in your repo and rename accordingly.
 
-Severity
+🧠 Problem We Solve
 
-Repetition / frequency
+Traditional hostel systems:
 
-Location
+Handle complaints first-come-first-serve
 
-Time sensitivity
+Miss urgent safety issues
 
-Auto-escalation of critical and repeated complaints
+Rely on manual attendance
 
-Explainable AI: each priority score is clearly justified
+Use invasive tracking methods
 
-Real-time admin dashboard
+UHCS fixes this by:
 
-Why it matters
+Prioritizing complaints based on urgency, severity, repetition, category, time & location
 
-Administrators focus on what needs attention first, not what was submitted first.
+Auto-escalating critical and repeated issues
 
-🕒 Privacy-Preserving Attendance System
-Features
+Explaining why an issue is high priority (transparent AI)
 
-Attendance allowed only when:
+Allowing attendance only via hostel Wi-Fi + registered device
 
-Connected to hostel Wi-Fi
+Flagging suspicious attendance using AI anomaly detection
 
-Using a registered device
+⚙️ System Architecture (High Level)
+Student Portal ──┐
+                 ├── Flask Backend ── NLP + AI Engine ── Admin Dashboard
+Admin Portal ────┘
 
-Within a strict time window
+👨‍🎓 Student Portal Features
 
-No biometrics, cameras, GPS, or continuous tracking
+✅ Wi-Fi verified hostel attendance
 
-AI-based anomaly detection flags suspicious patterns
+🕒 Time-window restricted check-in
 
-Manual review control remains with wardens
+📝 File complaints (text + optional image)
 
-Why it matters
+📌 Track complaint status
 
-Eliminates queues and proxy attendance without invading student privacy.
+🧠 AI-classified complaint category
+
+🛡️ Admin (Warden) Portal Features
+
+📊 Attendance percentage graphs & pie charts
+
+🚨 High-priority complaint alerts
+
+📈 Complaint trends & repetition analysis
+
+🔍 Explainable AI priority reasoning
+
+⚠️ Anomaly detection for attendance misuse
 
 FRONTEND 
 <img width="1600" height="738" alt="image" src="https://github.com/user-attachments/assets/b7423f38-4106-4b06-a99c-7bf17d70429f" />
@@ -79,6 +94,7 @@ FRONTEND
 <img width="891" height="132" alt="image" src="https://github.com/user-attachments/assets/fa0cfa91-c6b1-4092-8be5-00b30a0e6590" />  
 ##using transformers for severity analysis
 <img width="497" height="327" alt="image" src="https://github.com/user-attachments/assets/79505122-26af-451b-ad4f-fab4fedf0c66" /> <img width="1600" height="737" alt="image" src="https://github.com/user-attachments/assets/9d0d9dd7-fc3a-4262-982e-71d4af766c0c" />
+
 
 
 
