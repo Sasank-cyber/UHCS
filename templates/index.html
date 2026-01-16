@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>SmartHostel</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+
+    <body class="bg-slate-900 text-white">
+        <!-- Header -->
+        <header class="p-6 border-b border-white/10">
+            <h1 class="text-2xl font-bold text-cyan-400">SmartHostel</h1>
+            <p class="text-sm text-white/60">Intelligent Hostel Management</p>
+        </header>
+
+        <!-- Login -->
+        <section class="p-6 max-w-md mx-auto">
+            <h2 class="text-xl mb-4">Student Login</h2>
+
+            <input
+                id="name"
+                placeholder="Name"
+                class="w-full p-2 mb-3 rounded bg-white/10"
+            />
+
+            <input
+                id="block"
+                placeholder="Block"
+                class="w-full p-2 mb-3 rounded bg-white/10"
+            />
+
+            <input
+                id="room"
+                placeholder="Room"
+                class="w-full p-2 mb-3 rounded bg-white/10"
+            />
+
+            <button
+                onclick="login()"
+                class="w-full bg-cyan-500 py-2 rounded font-semibold"
+            >
+                Login
+            </button>
+        </section>
+
+        <!-- Dashboard -->
+        <section id="dashboard" class="hidden p-6 max-w-3xl mx-auto">
+            <h2 id="welcome" class="text-xl mb-4"></h2>
+
+            <!-- Attendance -->
+            <div class="bg-white/5 p-4 rounded-xl mb-6">
+                <h3 class="mb-2 font-semibold">Attendance</h3>
+                <button
+                    onclick="markAttendance()"
+                    class="bg-green-500 px-4 py-2 rounded"
+                >
+                    Mark Present
+                </button>
+            </div>
+
+            <!-- Complaint -->
+            <div class="bg-white/5 p-4 rounded-xl">
+                <h3 class="mb-2 font-semibold">Complaint</h3>
+
+                <select
+                    id="category"
+                    class="w-full mb-2 p-2 bg-white/10 rounded"
+                >
+                    <option value="water">Water</option>
+                    <option value="electricity">Electricity</option>
+                    <option value="wifi">WiFi</option>
+                    <option value="safety">Safety</option>
+                </select>
+
+                <textarea
+                    id="desc"
+                    class="w-full p-2 bg-white/10 rounded mb-2"
+                    placeholder="Describe issue..."
+                ></textarea>
+
+                <button
+                    onclick="submitComplaint()"
+                    class="bg-amber-500 px-4 py-2 rounded"
+                >
+                    Submit
+                </button>
+            </div>
+        </section>
+
+        <script src="/static/js/app.js"></script>
+    </body>
+</html>

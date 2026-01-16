@@ -51,10 +51,15 @@ def output(text):
 def ranking(scores):
     ranking = np.argsort(scores)
     ranking = ranking[::-1]
-    for i in range(scores.shape[0]):
-        l = config.id2label[ranking[i]]
-        s = scores[ranking[i]]
-        print(f"{i + 1}) {l} {np.round(float(s), 4)}")
+    # for i in range(scores.shape[0]):
+    #     l = config.id2label[ranking[i]]
+    #     s = scores[ranking[i]]
+    #     print(f"{i + 1}) {l} {np.round(float(s), 4)}")
+
+    negative_s = np.round(scores[ranking[0]], 4)
+    neutral_s = np.round(scores[ranking[2]], 4)
+    postive_s = np.round(scores[ranking[2]], 4)
+    return negative_s + neutral_s
 
 
 def predict_category(text):
